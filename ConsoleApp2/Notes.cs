@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using TRIM.SDK;
 
@@ -34,12 +35,12 @@ namespace ConsoleApp2
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Classification cls = (Classification)p.db.FindTrimObjectByName(BaseObjectTypes.Classification, "number=" + ClsNumber);
-            if (cls != null)
+            TrimMainObjectSearch cls = new TrimMainObjectSearch(p.db, BaseObjectTypes.Classification);
+            cls.SetSearchString("number:" + ClsNumber);
+            foreach (Classification clsRec in cls)
             {
-                cls.Notes = txtnotes.Text;
-                cls.Save();
-                Console.WriteLine("Classification Notes Modified.");
+                clsRec.Notes = txtnotes.Text;
+                clsRec.Save();
             }
             this.Close();
         }
@@ -51,7 +52,7 @@ namespace ConsoleApp2
 
         private void btnstamp_Click(object sender, EventArgs e)
         {
-            txtnotes.Text = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
+            txtnotes.Text += "\t" + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
         }
 
         private void btncancel_Click(object sender, EventArgs e)
