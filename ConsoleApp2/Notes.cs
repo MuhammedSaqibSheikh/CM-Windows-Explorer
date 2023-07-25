@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
 using TRIM.SDK;
 
@@ -18,6 +17,7 @@ namespace ConsoleApp2
 
         private void Notes_Load(object sender, EventArgs e)
         {
+            //load notes from CM
             p.ConnectDb();
             TrimMainObjectSearch cls = new TrimMainObjectSearch(p.db, BaseObjectTypes.Classification);
             cls.SetSearchString("number:" + ClsNumber);
@@ -35,6 +35,7 @@ namespace ConsoleApp2
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //Save notes
             TrimMainObjectSearch cls = new TrimMainObjectSearch(p.db, BaseObjectTypes.Classification);
             cls.SetSearchString("number:" + ClsNumber);
             foreach (Classification clsRec in cls)

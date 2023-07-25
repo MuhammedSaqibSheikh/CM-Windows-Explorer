@@ -60,6 +60,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyChildFolder.cs" />
+    <Compile Include="MyRootFolder.cs" />
+    <Compile Include="MyShellFiles.cs" />
+    <Compile Include="MyShellFolderServer.cs" />
     <Compile Include="Notes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +72,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RootBaseFolder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
